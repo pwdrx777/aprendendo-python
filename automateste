@@ -1,0 +1,76 @@
+import pyautogui as pa
+import time
+from datetime import datetime
+
+pa.PAUSE = 1
+
+HORA_INICIO = "08:12"
+HORA_FIM = "18:00"
+
+# Aguarda chegar o horário de início
+while True:
+    agora = datetime.now().strftime("%H:%M")
+
+    if HORA_INICIO <= agora < HORA_FIM:
+        print(f"Iniciando automação às {agora}")
+        break
+
+    print(f"Aguardando 08:12... Horário atual: {agora}")
+    time.sleep(30)
+
+
+# =========================
+# ABRE O DASHBOARD
+# =========================
+
+pa.press("win")
+pa.write("edge")
+pa.press("enter")
+
+time.sleep(3)
+
+pa.write("https://arcosdorados.cloud.invgate.net/dashboard")
+pa.press("enter")
+
+time.sleep(3)
+
+pa.press("f11")
+
+time.sleep(4)
+
+pa.press("esc")
+
+time.sleep(4)
+
+# Coloque suas credenciais localmente
+pa.write("pedro.moreira@cadis.com.br")
+pa.press("tab")
+pa.write("@Raptors02@")
+pa.press("enter")
+
+time.sleep(10)
+
+
+# =========================
+# ATUALIZA O DASHBOARD
+# =========================
+
+while True:
+
+    agora = datetime.now().strftime("%H:%M")
+
+    # Chegou às 18:00
+    if agora >= HORA_FIM:
+        print("18:00"
+              " - Encerrando automação e fechando o navegador.")
+
+        # Fecha a janela atual do Edge
+        pa.hotkey("alt", "f4")
+
+    # Atualiza a página
+    pa.press("f5")
+
+    print(f"Dashboard atualizado às {agora}")
+
+    # Espera 60 segundos
+    time.sleep(60)
