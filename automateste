@@ -43,9 +43,9 @@ pa.press("esc")
 time.sleep(4)
 
 # Coloque suas credenciais localmente
-pa.write("pedro.moreira@cadis.com.br")
+pa.write("MEU_EMAIL")
 pa.press("tab")
-pa.write("@Raptors02@")
+pa.write("MINHA_SENHA")
 pa.press("enter")
 
 time.sleep(10)
